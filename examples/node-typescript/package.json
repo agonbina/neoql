@@ -1,0 +1,35 @@
+{
+  "name": "neoql-example-node-typescript",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build",
+    "build": "tsc",
+    "dev": "run-p -l 'dev:watch' 'dev:start'",
+    "dev:watch": "FORCE_COLOR=1 SUPPRESS_NO_CONFIG_WARNING=true tsc --watch",
+    "dev:start": "FORCE_COLOR=1 SUPPRESS_NO_CONFIG_WARNING=true nodemon -e js,graphqls --delay 100ms --inspect src"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.5",
+    "@types/express": "^4.0.37",
+    "@types/graphql": "^0.10.2",
+    "@types/node": "^7.0.43",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "@types/ramda": "^0.24.7",
+    "apollo-server-express": "^1.1.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "graphql": "^0.10.5",
+    "graphql-tools": "^1.2.1",
+    "merge-graphql-schemas": "^1.1.2",
+    "neo4j-driver": "^1.5.0-alpha01",
+    "ramda": "^0.24.1",
+    "tslib": "^1.7.1",
+    "neoql": "^0.x"
+  },
+  "private": true
+}

@@ -1,0 +1,74 @@
+# Sets a default value for a field
+directive @default(value: String!) on FIELD
+
+directive @node on SCHEMA
+directive @relationsip(name: String!, to: String, from: String) on SCHEMA
+
+type Follower @relationship(name: "FOLLOWS", to: "User") {
+  id: ID!
+  username: String!
+}
+
+type Owner @relationship(name: "OWNER", to: "Vehicle") {
+  purchasedFor: Float!
+}
+
+type User @node {
+  username: ID!
+  muted: Boolean!
+  followers: [Follower]!
+}
+
+type Vehicle @node {
+  username: ID!
+  muted: Boolean!
+  owner: Owner!
+}
+
+type TimelineFeedItem {
+  activityId: ID!
+  actor: String!
+  verb: String!
+  object: String!
+}
+
+enum Visibility {
+  public,
+  private
+}
+
+type ProfileStats {
+  followers: Int!
+  followings: Int!
+}
+
+type Profile {
+  username: String! @default(value: "agon")
+  muted: Boolean! 
+  visibility: Visibility!
+  stats: ProfileStats!
+  followers: [String]!
+  followings: [String]!
+  timeline: [TimelineFeedItem]!
+}
+
+type Query {
+  profile(id: String): Profile!
+  vehicle(id: Int!): Vehicle!
+}
+
+type MuteResponse {
+  muted: Boolean!
+}
+
+type Mutation {
+  addVehicle(name: String!): Vehicle!
+  follow(id: String!): Boolean!
+  unfollow(id: String!): Boolean!
+  muteUser: MuteResponse!
+}
+
+schema {
+  query: Query,
+  mutation: Mutation
+}

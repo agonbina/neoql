@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "lib": [
+      "es6",
+      "es2015.promise",
+      "esnext.asynciterable",
+      "es2016.array.include"
+    ],
+    "outDir": "src",
+    "rootDir": "src",
+    "declaration": false
+  },
+  "include": [
+    "src/*.ts"
+  ]
+}

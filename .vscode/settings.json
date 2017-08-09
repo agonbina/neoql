@@ -1,0 +1,15 @@
+{
+  "files.exclude": {
+    "**/build": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": {
+      "when": "$(basename)"
+    }
+  },
+  "files.associations": {
+    "*.graphqls": "graphql",
+    "*.graphcool": "graphql"
+  }
+}
